@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        {% block title %}{% endblock %} | Watch that film!
+        {% block title %}{% endblock %} | Escute essa música!
     </title>
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" /> <!-- adicione esta linha -->
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> <!-- adicione esta linha -->
@@ -17,9 +17,10 @@
 <body>
     <header id="cabecalho-principal">
         <a href="{% url 'index' %}"> <img src="{% static 'logo.svg' %}"> </a> <!-- adicione esta linha -->
+
         <nav id="navegacao-principal">
             <ul>
-              <li><a href="{% url 'albuns:index' %}">Filmes</a></li>
+              <li><a href="{% url 'albuns:index' %}">Álbuns</a></li>
               <!-- adicione esta linha -->
               <li><a href="{% url 'about' %}">Sobre</a></li>
             </ul>

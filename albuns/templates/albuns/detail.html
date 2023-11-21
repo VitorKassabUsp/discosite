@@ -1,14 +1,17 @@
-{% extends 'base.html' %} {% block title %} {{ album.name }} ({{
+{% extends 'base.html' %} {% block title %} {{ album.title }} ({{
     album.release_year }} {% endblock title %} {% block content %}
-    <h2>Detalhes do Filme {{ album.name }} ({{ album.release_year }})</h2>
+    <h2>Detalhes do Álbum {{ album.title }} ({{ album.release_year }})</h2>
     
-    <section class="dados-de-filme">
-      <img src="{{ album.poster_url }}" alt="Poster do filme {{ album.name}}" />
+    <section class="dados-de-filme"> <!--deixar como dados de filme para usar css-->
+      <img src="{{ album.poster_url }}" alt="Poster do Álbum {{ album.title}}" />
       <ul>
         <li>Título: {{ album.title }}</li>
         <li>Ano de Lançamento: {{ album.release_year }}</li>
         <li>Artista: {{ album.band }}</li>
         <li>Descrição: {{ album.content }}</li>
+        <hr>
+        <li><a href="{% url 'albuns:update' album.id %}">Editar</a></li>
+    <li><a href="{% url 'albuns:delete' album.id %}">Apagar</a></li>
         <hr>
         <li>Data de postagem: {{ album.post_date }}</li>
         

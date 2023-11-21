@@ -8,4 +8,6 @@ urlpatterns = [
     path('search/', views.search_albuns, name='search'),
     path('create/', views.create_album, name='create'),
     path('<int:album_id>/', views.detail_album, name='detail'),
+    path('update/<int:album_id>/', views.update_album, name='update'),
+    path('delete/<int:album_id>/', views.delete_album, name='delete'),
 ]

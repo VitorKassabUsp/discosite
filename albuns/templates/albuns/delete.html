@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="{% url 'albuns:delete' album.id %}" method="post">
+  {% csrf_token %}
+  <p>
+    Você tem certeza que deseja apagar o filme "{{ album.title }} "?
+  </p>
+  <button type="submit">Apagar</button>
+</form>
+{% endblock content %}

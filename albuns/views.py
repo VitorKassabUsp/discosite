@@ -48,3 +48,30 @@ def create_album(request):
             reverse('albuns:detail', args=(album.id, )))
     else:
         return render(request, 'albuns/create.html', {})
+    
+def update_album(request, album_id):
+    album = get_object_or_404(Post, pk=album_id)
+
+    if request.method == "POST":
+        album.title = request.POST['title']
+        album.content = request.POST['content']
+        album.release_year = request.POST['release_year']
+        album.band = request.POST['band']
+        album.poster_url = request.POST['poster_url']
+        album.save()
+        return HttpResponseRedirect(
+            reverse('albuns:detail', args=(album.id, )))
+
+    context = {'album': album}
+    return render(request, 'albuns/update.html', context)
+
+
+def delete_album(request, album_id):
+    album = get_object_or_404(Post, pk=album_id)
+
+    if request.method == "POST":
+        album.delete()
+        return HttpResponseRedirect(reverse('albuns:index'))
+
+    context = {'album': album}
+    return render(request, 'albuns/delete.html', context)

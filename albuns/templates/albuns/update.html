@@ -1,6 +1,7 @@
-{% extends 'base.html' %} {% block content %}
-<h2>Inserir Novo Álbum</h2>
-<form method="POST" action="{% url 'albuns:create' %}">
+{% extends 'base.html' %}
+{% block content %}
+<h2>Atualizar Dados do Filme {{ album.title }} ({{ album.release_year}})</h2>
+<form method="post" action="{% url 'albuns:update' album.id%}">
   {% csrf_token %}
   <p>
     <label for="id_title">Título:</label>
@@ -22,7 +23,6 @@
     <label for="id_poster_url">URL do Poster:</label>
     <input type="url" name="poster_url" id="id_poster_url" />
   </p>
-  <button type="submit">Criar</button>
+  <button type="submit">Atualizar</button>
 </form>
-
 {% endblock content %}
