@@ -73,11 +73,16 @@ class PostSearchView(ListView):
         context = {'form': form}
         return render(request, 'albuns/create.html', context)
  ''' 
-class PostCreateView(CreateView): #cria, mas nao manda pro detalhes após criar
+class PostCreateView(CreateView): 
     model = Post
     form_class = PostForm
     template_name = 'albuns/create.html'
     success_url = reverse_lazy('albuns:create')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        # Após criar o post, redirecione para os detalhes do post recém-criado
+        return HttpResponseRedirect(reverse('albuns:detail', args=(self.object.id,)))
 
 '''
 def update_album(request, album_id):
