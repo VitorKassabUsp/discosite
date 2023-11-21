@@ -1,28 +1,11 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+
+{% block content %}
 <h2>Inserir Novo Álbum</h2>
-<form method="POST" action="{% url 'albuns:create' %}">
-  {% csrf_token %}
-  <p>
-    <label for="id_title">Título:</label>
-    <input type="text" name="title" id="id_title" />
-  </p>
-  <p>
-    <label for="id_band">Artista:</label>
-    <input type="text" name="band" id="id_band" />
-  </p>
-  <p>
-    <label for="id_release_year">Ano de Lançamento:</label>
-    <input type="number" name="release_year" id="id_release_year" />
-  </p>
-  <p>
-    <label for="id_content">Descrição:</label>
-    <input type="text" name="content" id="id_content" />
-  </p>
-  <p>
-    <label for="id_poster_url">URL do Poster:</label>
-    <input type="url" name="poster_url" id="id_poster_url" />
-  </p>
-  <button type="submit">Criar</button>
+<form method="post" action="{% url 'albuns:create' %}">
+    {% csrf_token %}
+    {{ form.as_p }} <!-- Django converte essa linha para label/input...-->
+    <button type="submit">Criar</button>
 </form>
 
 {% endblock content %}

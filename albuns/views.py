@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .models import Post
+from .forms import PostForm
 
 from django.shortcuts import render, get_object_or_404
 
@@ -47,7 +48,9 @@ def create_album(request):
         return HttpResponseRedirect(
             reverse('albuns:detail', args=(album.id, )))
     else:
-        return render(request, 'albuns/create.html', {})
+        form = PostForm()
+        context = {'form': form}
+        return render(request, 'albuns/create.html', context)
     
 def update_album(request, album_id):
     album = get_object_or_404(Post, pk=album_id)
