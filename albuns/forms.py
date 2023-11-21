@@ -2,7 +2,7 @@ from django import forms
 
 
 from django.forms import ModelForm
-from .models import Post
+from .models import Post, Comment
 
 
 class PostForm(ModelForm):
@@ -22,4 +22,17 @@ class PostForm(ModelForm):
             'poster_url': 'URL do Poster',
             'content': 'Descrição',
             'band': 'Artista',
+        }
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = [
+            'author',
+            'text',
+        ]
+        labels = {
+            'author': 'Usuário',
+            'text': 'Comentário',
         }

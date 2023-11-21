@@ -17,5 +17,28 @@
         
       </ul>
     </section>
+
+    <section>
+      <header>
+          <h3>Comentários</h3>
+      </header>
+      <ul>
+          {% if album.comment_set.all %}
+              {% for comment in album.comment_set.all %}
+                  <figure>
+                      <blockquote>
+                          "{{ comment.text }}"
+                      </blockquote>
+                      <figcaption>—{{ comment.author }}</figcaption>
+                  </figure>
+              {% endfor %}
+          {% else %}
+              <p>Ainda não existe nenhuma comentário para este álbum.</p>
+          {% endif %}
+      </ul>
+      <hr>
+      <a href="{% url 'albuns:comment' album.pk %}"><button>Crie sua Resenha</button></a>
+  
+  </section>
     
     {% endblock content %}

@@ -24,4 +24,6 @@ urlpatterns = [
 
     #path('delete/<int:album_id>/', views.delete_album, name='delete'),
     path('albuns/<int:pk>/delete/', PostDeleteView.as_view(), name='delete'),
+
+    path('albuns/<int:post_id>/comment/', views.create_comment, name='comment'),
 ]
