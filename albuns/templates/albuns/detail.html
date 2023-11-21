@@ -5,8 +5,13 @@
     <section class="dados-de-filme">
       <img src="{{ album.poster_url }}" alt="Poster do filme {{ album.name}}" />
       <ul>
-        <li>Nome: {{ album.name }}</li>
+        <li>Título: {{ album.title }}</li>
         <li>Ano de Lançamento: {{ album.release_year }}</li>
+        <li>Artista: {{ album.band }}</li>
+        <li>Descrição: {{ album.content }}</li>
+        <hr>
+        <li>Data de postagem: {{ album.post_date }}</li>
+        
       </ul>
     </section>
     
