@@ -103,12 +103,14 @@ footer#rodape-principal {
 a {
   color: var(--secondary-color);
   text-decoration: none;
+
 }
 
 a:hover {
   color: var(--secondary-color-light);
   text-decoration: underline;
 }
+
 
 .dados-de-filme {
   width: 100%;
