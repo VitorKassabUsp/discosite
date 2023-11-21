@@ -2,11 +2,11 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 from .temp_data import album_data
-
+from django.views import generic
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.urls import reverse_lazy
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from .forms import PostForm, CommentForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -85,3 +85,9 @@ def create_comment(request, post_id):
     context = {'form': form, 'post': post}
     #return HttpResponseRedirect(reverse('albuns:detail', args=(post_id,)))
     return render(request, 'albuns/comment.html', context)
+
+
+class CategoryListView(generic.ListView): #
+    model = Category
+    template_name = 'albuns/categories.html'
+
