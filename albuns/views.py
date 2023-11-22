@@ -87,7 +87,26 @@ def create_comment(request, post_id):
     return render(request, 'albuns/comment.html', context)
 
 
-class CategoryListView(generic.ListView): #
+class CategoryListView(generic.ListView):
     model = Category
-    template_name = 'albuns/categories.html'
+    template_name = 'albuns/category.html'
+    context_object_name = 'category_list'
 
+class CategoryPostsListView(generic.ListView):
+    template_name = 'albuns/index.html'
+    context_object_name = 'post_list'
+
+    def get_category(self):
+        return Category.objects.get(pk=self.kwargs['category_id'])
+
+    def get_queryset(self):
+        return self.get_category().posts.all()
+    
+    def get_context_data(self, **kwargs):
+        category = self.get_category()
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'Categoria'
+        context['albumpage_title'] = f'Categoria {category.name}'
+        context['category'] = True
+        context['category_id'] = category.id
+        return context
