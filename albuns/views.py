@@ -110,3 +110,15 @@ class CategoryPostsListView(generic.ListView):
         context['category'] = True
         context['category_id'] = category.id
         return context
+    
+class CategoryPostDetailView(generic.DetailView):
+    model = Post
+    template_name = 'albuns/detail.html'
+
+    def get_object(self):
+        category_id = self.kwargs.get('category_id')
+        pk = self.kwargs.get('pk')
+        category = Category.objects.get(pk=category_id)
+        posts = category.posts.all()
+        post = get_object_or_404(posts, pk=pk) 
+        return post

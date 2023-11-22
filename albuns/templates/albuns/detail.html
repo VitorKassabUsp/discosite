@@ -9,6 +9,7 @@
         <li>Ano de Lançamento: {{ album.release_year }}</li>
         <li>Artista: {{ album.band }}</li>
         <li>Descrição: {{ album.content }}</li>
+        
         <hr>
         <li><a href="{% url 'albuns:update' album.id %}">Editar</a></li>
     <li><a href="{% url 'albuns:delete' album.id %}">Apagar</a></li>
@@ -16,6 +17,15 @@
         <li>Data de postagem: {{ album.post_date }}</li>
         
       </ul>
+    </section>
+
+    <section> 
+    {% if album.category_set.all %}
+        <li><strong>Incluso nas categorias:</strong> {{ album.category_set.all|join:", " }} </li>
+    {% endif %}
+        
+
+
     </section>
 
     <section>

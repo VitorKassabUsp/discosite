@@ -23,7 +23,7 @@ Categorias
                 <a href="{% url 'albuns:detail' post.id %}">
                     <img src="{{ post.poster_url }}" alt="Imagem de {{ post.title}}">
                 </a>
-                <p>{{ album.title }}</p>
+                <p>{{ post.title }}</p>
             </div>
             {% endfor %}
         </div>
